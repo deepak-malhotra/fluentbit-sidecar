@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: logging-demo-standard
+spec:
+  containers:
+  - name: app-container
+    image: busybox
+    args:
+    - /bin/sh
+    - -c
+    - >
+      while true;
+      do
+        echo "$i: stdout demo by PCS"
+        i=$((i+1));
+        sleep 1;
+      done
