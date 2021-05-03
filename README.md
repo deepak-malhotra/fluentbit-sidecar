@@ -1,8 +1,8 @@
 # Fluent-Bit Sidecar for Kubernetes
 
-Run [Fluent-Bit](http://fluentbit.io/) as a sidecar to collect logs and output them to elasticsearch in a Kubernetes cluster. Fluent-Bit is configured in this example to tail a named directory (for the example: /mnt/log/reference-logging.txt) and collect all logs from the file.
+Run [Fluent-Bit](http://fluentbit.io/) as a sidecar to collect logs and output them to STDOUT in a Kubernetes cluster. Fluent-Bit is configured in this example to tail a named directory (for the example: /mnt/log/reference-logging.txt) and collect all logs from the file.
 
-This example includes a log generator app that runs with Fluent-Bit in one pod and writes logs to the named directory. 
+This example creates a Pod with 2 containers.  app-container prints to a file and sidercar container captures the file data and streams it to stdout. The sider runs fluent-bit. 
 
 ## Usage
 
@@ -10,8 +10,9 @@ To deploy in a Kubernetes cluster:
 
 ```kubectl -f create fluent-bit-sidecar.yaml```
 
-[Elasticsearch for Kubernetes](https://github.com/kubernetes/kubernetes/tree/master/examples/elasticsearch)
-
 ## History
 
-Previously we used FluentD as a log collector and are experimenting with this light-weight Fluent-Bit option. This sidecar example is useful for applications that don't just write logs to STDERR/STDOUT and instead/additionally write logs to a named directory. More details on our experience to come. 
+Previously FluentD was the de-Facto option for log generation. Fluent Bit is fully designed and built on top of the best ideas of Fluentd architecture and general design. Choosing which one to use depends on the end-user needs.
+The following table describes a comparison in different areas of the projects:
+
+![image](https://user-images.githubusercontent.com/63465751/116834542-eca34580-ac01-11eb-9e99-7f25b27150d7.png)
