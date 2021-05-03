@@ -10,6 +10,8 @@ To deploy in a Kubernetes cluster:
 
 ```kubectl -f create fluent-bit-sidecar.yaml```
 
+The Docker image I have used is not the standard one. Fluent-bit has a minimal image which dosn't include any standard tools, however for the purpose of demo, I used the deug image.  The Dockerfile used for creating the image can be found in the repo.
+
 ## History
 
 Previously FluentD was the de-Facto option for log generation. Fluent Bit is fully designed and built on top of the best ideas of Fluentd architecture and general design. Choosing which one to use depends on the end-user needs.
