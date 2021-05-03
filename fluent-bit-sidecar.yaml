@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: logger
+  name: logging-demo
 spec:
   containers:
   - name: app-container
