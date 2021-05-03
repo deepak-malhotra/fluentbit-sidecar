@@ -4,7 +4,7 @@ metadata:
   name: logger
 spec:
   containers:
-  - name: lc
+  - name: app-container
     image: busybox
     args:
     - /bin/sh
@@ -20,7 +20,7 @@ spec:
     volumeMounts:
     - name: varlog
       mountPath: /var/log
-  - name: fluent
+  - name: sidecar-container
     image: dmalhot1/deepak-fluent:latest
     volumeMounts:
     - name: varlog
